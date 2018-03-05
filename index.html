@@ -1,0 +1,94 @@
+<html>
+  <head>
+    <title>WE WANT WAR</title>
+  </head>
+  <style>
+    * {
+      margin:0; padding:0;
+    }
+    #display {
+    height:50px;
+    width:600px;;
+    overflow:hidden;
+    position:relative;
+    }
+    .text {
+      width: 400px;
+    cursor:pointer;
+    overflow:clip;
+    position:absolute;
+    left:10px;
+    margin-right:10px;
+    top:10px;
+    }
+    #display-2 {
+    transform: rotate(90);
+    transform: translate(100, 100);
+    }
+  </style>
+  <body>
+    <div id="display">
+      <p id="text">WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. </p>
+    </div>
+    <div id="display2">
+      <p id="text2">WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. </p>
+    </div>
+    <div id="display3">
+      <p id="text3">WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. </p>
+    </div>
+    <div id="display4">
+      <p id="text4">WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. WE WANT WAR. </p>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous">
+    </script>
+    <script>
+ function marquee(a, b) {
+    var width = b.width();
+    var start_pos = a.width();
+    var end_pos = -width;
+
+    function scroll() {
+        if (b.position().left <= -width) {
+            b.css('left', start_pos);
+            scroll();
+        }
+        else {
+            time = (parseInt(b.position().left, 10) - end_pos) *
+                (10000 / (start_pos - end_pos)); // Increase or decrease speed by changing value 10000
+            b.animate({
+                'left': -width
+            }, time, 'linear', function() {
+                scroll();
+            });
+        }
+    }
+
+    b.css({
+        'width': width,
+        'left': start_pos
+    });
+    scroll(a, b);
+    
+    b.mouseenter(function() {     // Remove these lines
+        b.stop();                 //
+        b.clearQueue();           // if you don't want
+    });                           //
+    b.mouseleave(function() {     // marquee to pause
+        scroll(a, b);             //
+    });                           // on mouse over
+    
+}
+
+$(document).ready(function() {
+    marquee($('#display'), $('#text'));  //Enter name of container element & marquee element
+    marquee($('#display2'), $('#text2'));
+    marquee($('#display3'), $('#text3'));
+    marquee($('#display4'), $('#text4'));
+});
+
+    </script>
+  </body>
+</html>
